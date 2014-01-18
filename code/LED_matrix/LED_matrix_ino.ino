@@ -46,6 +46,7 @@ void setup()
     fiveBySeven.setDir(DIR_NORMAL);
 }
 
+// Caution Triangle
 void loop()
 {
     fiveBySeven.setPoint(2, 5, 1);
@@ -69,3 +70,40 @@ void loop()
     fiveBySeven.setPoint(0, 3, 1);
     delay(1000);
 }
+
+// Checkmark
+
+//void loop()
+//{
+//    fiveBySeven.setPoint(0, 5, 1);
+//    delay(100);
+//    fiveBySeven.setPoint(1, 4, 1);
+//    delay(100);
+//    fiveBySeven.setPoint(2, 3, 1);
+//    delay(100);
+//    fiveBySeven.setPoint(3, 2, 1);
+//    delay(100);
+//    fiveBySeven.setPoint(4, 3, 1);
+//    delay(100);
+//    delay(1000);
+//}
+
+// Smiley-face
+
+//void loop()
+//{
+//    fiveBySeven.setPoint(4, 2, 1);
+//    delay(100);
+//    fiveBySeven.setPoint(3, 1, 1);
+//    delay(100);
+//    fiveBySeven.setPoint(2, 1, 1);
+//    delay(100);
+//    fiveBySeven.setPoint(1, 1, 1);
+//    delay(100);
+//    fiveBySeven.setPoint(0, 2, 1);
+//    delay(100);
+//    fiveBySeven.setPoint(3, 4, 1);
+//    delay(100);
+//    fiveBySeven.setPoint(1, 4, 1);
+//    delay(1000);
+//}
