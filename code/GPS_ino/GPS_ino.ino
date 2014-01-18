@@ -8,8 +8,8 @@ char buffer[5];
 char lat[24];
 char lon[36];
 
-int pointLat = 3341.5618;
-int pointLon = 1118.38117;
+double pointLat = 3341.5618;
+double pointLon = 11183.8117;
 
 void setup()
 {
@@ -66,11 +66,21 @@ void loop()
               }
             } while( v != '*');
             Serial.println("lat");
+            Serial.println(lat);
+            Serial.println("Double lat");
             double dlat = atof(lat);
             Serial.println(dlat);
-            Serial.println("lon");
+
+            Serial.println("Lon");
+            Serial.println(lon);
+            Serial.println("Double lon");
             double dlon = atof(lon);
             Serial.println(dlon);
+
+            Serial.println("calculated lat");
+            Serial.println( dlat - pointLat );
+            Serial.println("calculated lon");
+            Serial.println( dlon - pointLon );
           }
         }
       }
