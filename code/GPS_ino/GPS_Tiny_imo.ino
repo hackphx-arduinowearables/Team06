@@ -15,14 +15,12 @@ double pointLon = -111.838117;
 // The TinyGPS++ object
 TinyGPSPlus gps;
 
-void setup()
-{
+void setup(){
   Serial.begin(SerialBaud);
   Serial1.begin(Serial1Baud);
 }
 
-void loop()
-{
+void loop(){
     while (Serial1.available() > 0)
     if (gps.encode(Serial1.read())){
       displayInfo();
@@ -30,31 +28,17 @@ void loop()
   
 }
 
-void displayInfo()
-{
+void displayInfo(){
   Serial.print(F("Location: ")); 
-  if (gps.location.isValid())
-  {
-    /*
-    Serial.print(gps.location.lat(), 6);
-    Serial.print(F(","));
-    Serial.print(gps.location.lng(), 6);
-    */
+  if (gps.location.isValid()){
 
 
-            Serial.println("calculated Distance");
-           // Serial.println( (abs(gps.location.lat()) - abs(pointLat)), 6 );
-            Serial.println(distanceBetween(gps.location.lat(), gps.location.lng(), pointLat, pointLon));
-            //Serial.println("calculated lon");
-            //Serial.println( (abs(gps.location.lng()) - abs(pointLon)), 6 );
-
-
-
-
+    Serial.println("calculated Distance");
+    double locDist = gps.distanceBetween(gps.location.lat(), gps.location.lng(), pointLat, pointLon);
+    Serial.println(locDist);
 
   }
-  else
-  {
+  else{
     Serial.print(F("INVALID"));
   }
 
