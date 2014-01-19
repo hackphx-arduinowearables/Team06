@@ -29,13 +29,18 @@ void loop(){
 }
 
 void displayInfo(){
-  Serial.print(F("Location: ")); 
   if (gps.location.isValid()){
 
 
     Serial.println("calculated Distance");
     double locDist = gps.distanceBetween(gps.location.lat(), gps.location.lng(), pointLat, pointLon);
     Serial.println(locDist);
+    
+    /*
+    //
+    Put LED logic here with if statements
+    //
+    */
 
   }
   else{
