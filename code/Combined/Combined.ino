@@ -224,4 +224,3 @@ void displayInfo(){
 
   Serial.println();
 }
-
