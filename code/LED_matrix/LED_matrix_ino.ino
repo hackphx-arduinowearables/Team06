@@ -1,21 +1,9 @@
-/*
- * Test sketch for Xadow LED 5x7 Matrix. 
- * http://www.seeedstudio.com/depot/xadow-led-p-1518.html
- * Part of the Xadow line of miature and wearable electronics.
- * http://www.seeedstudio.com/wiki/Xadow
- *
- * This sketch presents a menu when you open the Serial Console
- * for you to select and view the various modes of the 5x7 Matrix
- *
- * Check out the wiki page for more info
- * http://www.seeedstudio.com/wiki/Xadow_LED_5X7
- * 
- * Seeed Studios is an Open Hardware company. Support our contributions by buying
- * our products! http://www.seeedstudio.com/
- */
-
 #include <Wire.h>
 #include <LEDMatrix.h>
+
+#include <Adafruit_NeoPixel.h>
+
+#define PIN A5
 
 #define ADDRESS 0x04
 
@@ -37,6 +25,8 @@ unsigned char data2[5] = {
 
 LEDMatrix fiveBySeven = LEDMatrix(ADDRESS);
 
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
+
 void setup()
 {
     Serial.begin(115200);
@@ -44,12 +34,19 @@ void setup()
     Serial.println("hello world");
     
     fiveBySeven.setDir(DIR_NORMAL);
+    
+    strip.begin();
+    strip.show(); // Initialize all pixels to 'off'
 }
 
-// Caution Triangle
-void loop()
-{
-    fiveBySeven.setPoint(2, 5, 1);
+void loop() {
+  // Some example procedures showing how to display to the pixels:
+  colorWipe(strip.Color(255, 0, 0), 50); // Red
+  colorWipe(strip.Color(0, 255, 0), 50); // Green
+//  colorWipe(strip.Color(0, 0, 255), 50); // Blue
+  colorWipe(strip.Color(255, 255, 0), 50); // Probably Yellow.
+  
+  fiveBySeven.setPoint(2, 5, 1);
     delay(100);
     fiveBySeven.setPoint(3, 4, 1);
     delay(100);
@@ -71,39 +68,10 @@ void loop()
     delay(1000);
 }
 
-// Checkmark
-
-//void loop()
-//{
-//    fiveBySeven.setPoint(0, 5, 1);
-//    delay(100);
-//    fiveBySeven.setPoint(1, 4, 1);
-//    delay(100);
-//    fiveBySeven.setPoint(2, 3, 1);
-//    delay(100);
-//    fiveBySeven.setPoint(3, 2, 1);
-//    delay(100);
-//    fiveBySeven.setPoint(4, 3, 1);
-//    delay(100);
-//    delay(1000);
-//}
-
-// Smiley-face
-
-//void loop()
-//{
-//    fiveBySeven.setPoint(4, 2, 1);
-//    delay(100);
-//    fiveBySeven.setPoint(3, 1, 1);
-//    delay(100);
-//    fiveBySeven.setPoint(2, 1, 1);
-//    delay(100);
-//    fiveBySeven.setPoint(1, 1, 1);
-//    delay(100);
-//    fiveBySeven.setPoint(0, 2, 1);
-//    delay(100);
-//    fiveBySeven.setPoint(3, 4, 1);
-//    delay(100);
-//    fiveBySeven.setPoint(1, 4, 1);
-//    delay(1000);
-//}
+void colorWipe(uint32_t c, uint8_t wait) {
+  for(uint16_t i=0; i<strip.numPixels(); i++) {
+      strip.setPixelColor(i, c);
+      strip.show();
+      delay(wait);
+  }
+}
