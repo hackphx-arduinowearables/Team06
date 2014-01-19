@@ -7,6 +7,10 @@
 
 ###Arduino Xadow
 
+Arduino 1.0.5 modified with Xadow .cpp and devices file.
+
+
+
 
 ###Model
 This device was modeled in Blender, and printed with a 3D printer
