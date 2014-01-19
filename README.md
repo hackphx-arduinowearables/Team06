@@ -19,3 +19,10 @@ Image:
 
 
 <img src="http://i.imgur.com/G58VDEy.jpg" width="500">
+
+
+## Code screenshot
+
+[Imgur](http://i.imgur.com/mmWgKSu.png)
+
+<img src="http://i.imgur.com/mmWgKSu.png" width="500">
